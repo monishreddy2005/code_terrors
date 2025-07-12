@@ -1,3 +1,13 @@
+#Problem Statement-1 
+Skill Swap Platform
+
+#Team:
+1.Chennareddy Monish
+2.Maram Ruthvi
+3.B Harshitha
+4.Parvathy Rajesh
+
+
 # Skill Swap Backend
 
 A Node.js backend API for a skill swapping platform built with Express.js and PostgreSQL.
