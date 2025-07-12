@@ -169,6 +169,30 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+.register-btn {
+  background: #6a82fb;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(106,130,251,0.08);
+  text-decoration: none;
+}
+.register-btn:first-child {
+  margin-left: 0;
+}
+.register-btn:hover {
+  background: #5a72e8;
+}
+
 /* Main Layout */
 .main-layout {
     display: flex;

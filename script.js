@@ -4,18 +4,22 @@ const userActions = document.getElementById('userActions');
 const logoutBtn = document.getElementById('logoutBtn');
 
 // Check login status on page load
+// Now, use 'user' in localStorage to determine login state
+function isUserLoggedIn() {
+    return !!localStorage.getItem('user');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     updateHeaderVisibility();
     updateProfileSidebarVisibility();
+    updateRequestSwapButtons();
 });
 
-// Function to update header visibility based on login status
 function updateHeaderVisibility() {
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const loggedIn = isUserLoggedIn();
     const guestActions = document.getElementById('guestActions');
     const userActions = document.getElementById('userActions');
-    
-    if (isLoggedIn) {
+    if (loggedIn) {
         guestActions.style.display = 'none';
         userActions.style.display = 'flex';
     } else {
@@ -24,199 +28,68 @@ function updateHeaderVisibility() {
     }
 }
 
-// Function to update profile sidebar visibility
 function updateProfileSidebarVisibility() {
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const loggedIn = isUserLoggedIn();
     const profileSidebar = document.getElementById('profileSidebar');
-    
     if (profileSidebar) {
-        if (isLoggedIn) {
-            profileSidebar.style.display = 'block';
-        } else {
-            profileSidebar.style.display = 'none';
-        }
+        profileSidebar.style.display = loggedIn ? 'block' : 'none';
     }
 }
 
-// Logout functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            localStorage.removeItem('isLoggedIn');
-            updateHeaderVisibility();
-            updateProfileSidebarVisibility();
-            
-            // Redirect to login page or refresh current page
-            if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
-                window.location.reload();
-            } else {
-                window.location.href = 'index.html';
-            }
-        });
-    }
-});
-
-// Notification System
-function showNotification(message, type = 'info') {
-    // Remove existing notifications
-    const existingNotification = document.querySelector('.notification');
-    if (existingNotification) {
-        existingNotification.remove();
-    }
-    
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    
-    // Set icon based on type
-    let icon = 'fa-info-circle';
-    if (type === 'success') icon = 'fa-check-circle';
-    if (type === 'error') icon = 'fa-exclamation-circle';
-    
-    notification.innerHTML = `
-        <div class="notification-content">
-            <i class="fas ${icon}"></i>
-            <span>${message}</span>
-        </div>
-        <button class="notification-close">
-            <i class="fas fa-times"></i>
-        </button>
-    `;
-    
-    // Set background color based on type
-    let backgroundColor = '#17a2b8';
-    if (type === 'success') backgroundColor = '#28a745';
-    if (type === 'error') backgroundColor = '#dc3545';
-    
-    // Add styles
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: ${backgroundColor};
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        z-index: 10000;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        max-width: 400px;
-        animation: slideInRight 0.3s ease-out;
-    `;
-    
-    // Add animation keyframes if not already present
-    if (!document.querySelector('#notification-styles')) {
-        const style = document.createElement('style');
-        style.id = 'notification-styles';
-        style.textContent = `
-            @keyframes slideInRight {
-                from {
-                    transform: translateX(100%);
-                    opacity: 0;
-                }
-                to {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-            }
-            
-            .notification-content {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                flex: 1;
-            }
-            
-            .notification-close {
-                background: none;
-                border: none;
-                color: white;
-                cursor: pointer;
-                padding: 0.25rem;
-                border-radius: 50%;
-                transition: background 0.2s ease;
-            }
-            
-            .notification-close:hover {
-                background: rgba(255, 255, 255, 0.2);
-            }
-        `;
-        document.head.appendChild(style);
-    }
-    
-    // Add to page
-    document.body.appendChild(notification);
-    
-    // Close button functionality
-    const closeBtn = notification.querySelector('.notification-close');
-    closeBtn.addEventListener('click', () => {
-        notification.style.animation = 'slideInRight 0.3s ease-out reverse';
-        setTimeout(() => notification.remove(), 300);
-    });
-    
-    // Auto remove after 5 seconds
-    setTimeout(() => {
-        if (notification.parentNode) {
-            notification.style.animation = 'slideInRight 0.3s ease-out reverse';
-            setTimeout(() => notification.remove(), 300);
-        }
-    }, 5000);
-}
-
-// Request swap button functionality
-document.addEventListener('DOMContentLoaded', function() {
+// Update request swap button logic to allow logged-in users
+function updateRequestSwapButtons() {
     const requestButtons = document.querySelectorAll('.request-btn');
-    
     requestButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent card click when button is clicked
-            
-            // Check if user is logged in
-            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-            
-            if (!isLoggedIn) {
-                alert('Please log in to request a skill swap.');
-                window.location.href = 'login.html';
+        button.onclick = function(e) {
+            e.stopPropagation();
+            if (!isUserLoggedIn()) {
+                // Show modal for guests
+                const guestModal = document.getElementById('guestModal');
+                if (guestModal) guestModal.style.display = 'block';
                 return;
             }
-            
-            // Get user info from the card
+            // Allow swap request for logged-in users
             const userCard = this.closest('.user-card');
             const userName = userCard.querySelector('.user-name').textContent;
-            
-            // Show success message
             const originalText = this.textContent;
             this.textContent = 'Request Sent!';
             this.style.background = '#28a745';
             this.style.borderColor = '#28a745';
-            
             setTimeout(() => {
                 this.textContent = originalText;
                 this.style.background = '';
                 this.style.borderColor = '';
             }, 2000);
-            
             console.log(`Swap request sent to ${userName}`);
-        });
+        };
     });
-});
+}
+
+// Modal close and register button logic
+const guestModal = document.getElementById('guestModal');
+if (guestModal) {
+    document.getElementById('closeModalBtn').onclick = function() {
+        guestModal.style.display = 'none';
+    };
+    document.getElementById('modalRegisterBtn').onclick = function() {
+        window.location.href = 'signup.html';
+    };
+}
 
 // User card click functionality
-document.querySelectorAll('.user-card').forEach(card => {
+// Only allow full profile view for logged-in users
+const userCards = document.querySelectorAll('.user-card');
+userCards.forEach(card => {
     card.addEventListener('click', function(e) {
-        // Don't navigate if clicking on request button
-        if (e.target.closest('.request-btn')) {
+        if (e.target.closest('.request-btn')) return;
+        if (!isUserLoggedIn()) {
+            // Show modal for guests
+            const guestModal = document.getElementById('guestModal');
+            if (guestModal) guestModal.style.display = 'block';
             return;
         }
-        
         const userName = this.querySelector('.user-name').textContent;
         showNotification(`Opening ${userName}'s profile...`, 'info');
-        
-        // Simulate opening profile page
         setTimeout(() => {
             window.location.href = 'profile.html';
         }, 1000);
