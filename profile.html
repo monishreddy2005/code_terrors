@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Skill Swap</title>
+    <link rel="stylesheet" href="profile.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <h1>Skill Swap</h1>
+            </div>
+            <div class="header-right">
+                <a href="swap-requests.html" class="swap-requests-btn">
+                    <i class="fas fa-exchange-alt"></i>
+                    Swap Requests
+                    <span class="request-count">3</span>
+                </a>
+                <a href="index.html" class="home-btn">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <div class="profile-menu">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Profile" class="profile-pic">
+                    <div class="profile-dropdown">
+                        <a href="user-profile.html" class="dropdown-item">
+                            <i class="fas fa-user"></i>
+                            My Profile
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="profile-container">
+            <!-- User Profile Header -->
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" alt="John Doe">
+                    <div class="online-status">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <h2 class="user-name">John Doe</h2>
+                    <p class="user-title">Full Stack Developer</p>
+                    <div class="user-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        New York, NY
+                    </div>
+                    <div class="user-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="rating-text">4.0</span>
+                        <span class="review-count">(24 reviews)</span>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="request-swap-btn">
+                        <i class="fas fa-handshake"></i>
+                        Request Swap
+                    </button>
+                    <button class="message-btn">
+                        <i class="fas fa-envelope"></i>
+                        Message
+                    </button>
+                </div>
+            </div>
+
+            <!-- Profile Content -->
+            <div class="profile-content">
+                <div class="content-grid">
+                    <!-- Skills Section -->
+                    <div class="skills-section">
+                        <h3>Skills</h3>
+                        <div class="skills-container">
+                            <div class="skills-offered">
+                                <h4><i class="fas fa-gift"></i> Skills Offered</h4>
+                                <div class="skills-list">
+                                    <span class="skill-tag">Web Development</span>
+                                    <span class="skill-tag">React</span>
+                                    <span class="skill-tag">Node.js</span>
+                                    <span class="skill-tag">JavaScript</span>
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">Database Design</span>
+                                </div>
+                            </div>
+                            <div class="skills-wanted">
+                                <h4><i class="fas fa-search"></i> Skills Wanted</h4>
+                                <div class="skills-list">
+                                    <span class="skill-tag">UI/UX Design</span>
+                                    <span class="skill-tag">Graphic Design</span>
+                                    <span class="skill-tag">Video Editing</span>
+                                    <span class="skill-tag">Photography</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- About Section -->
+                    <div class="about-section">
+                        <h3>About</h3>
+                        <p>Passionate full-stack developer with 5+ years of experience building web applications. I love teaching others and learning new skills. Always excited to share my knowledge and pick up new techniques from fellow developers and creatives.</p>
+                        <div class="user-stats">
+                            <div class="stat">
+                                <span class="stat-number">15</span>
+                                <span class="stat-label">Skills Taught</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">8</span>
+                                <span class="stat-label">Skills Learned</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">24</span>
+                                <span class="stat-label">Reviews</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reviews Section -->
+                    <div class="reviews-section">
+                        <h3>Reviews & Feedback</h3>
+                        <div class="reviews-container">
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" alt="Sarah" class="reviewer-avatar">
+                                    <div class="reviewer-info">
+                                        <h4>Sarah Johnson</h4>
+                                        <div class="review-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <span class="review-date">2 weeks ago</span>
+                                </div>
+                                <p class="review-text">John is an excellent teacher! He helped me understand React concepts that I was struggling with. Very patient and explains things clearly. Highly recommend!</p>
+                            </div>
+
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="Mike" class="reviewer-avatar">
+                                    <div class="reviewer-info">
+                                        <h4>Mike Chen</h4>
+                                        <div class="review-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <span class="review-date">1 month ago</span>
+                                </div>
+                                <p class="review-text">Great experience learning Node.js from John. He's very knowledgeable and helped me build my first backend API. Would definitely swap skills again!</p>
+                            </div>
+
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face" alt="Emily" class="reviewer-avatar">
+                                    <div class="reviewer-info">
+                                        <h4>Emily Rodriguez</h4>
+                                        <div class="review-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <span class="review-date">3 weeks ago</span>
+                                </div>
+                                <p class="review-text">John taught me JavaScript fundamentals and helped me understand modern ES6+ features. Very professional and friendly. Great learning experience!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="activity-section">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>Taught React Hooks</h4>
+                                    <p>Helped Sarah understand React Hooks and custom hooks</p>
+                                    <span class="activity-time">2 days ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>Learned UI/UX Design</h4>
+                                    <p>Started learning UI/UX design principles from Sarah</p>
+                                    <span class="activity-time">1 week ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>Completed Skill Swap</h4>
+                                    <p>Successfully completed Node.js for Graphic Design swap</p>
+                                    <span class="activity-time">2 weeks ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Swap Request Modal -->
+    <div id="swapModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-handshake"></i> Request Skill Swap</h2>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="swapRequestForm">
+                    <div class="form-group">
+                        <label for="offeredSkill">
+                            <i class="fas fa-gift"></i> Choose one of your offered skills:
+                        </label>
+                        <select id="offeredSkill" name="offeredSkill" required>
+                            <option value="">Select your skill to offer</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="React">React</option>
+                            <option value="Node.js">Node.js</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="Python">Python</option>
+                            <option value="Database Design">Database Design</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="wantedSkill">
+                            <i class="fas fa-search"></i> Choose one of their wanted skills:
+                        </label>
+                        <select id="wantedSkill" name="wantedSkill" required>
+                            <option value="">Select skill you want to learn</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Video Editing">Video Editing</option>
+                            <option value="Photography">Photography</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">
+                            <i class="fas fa-comment"></i> Message (optional):
+                        </label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell them why you'd like to swap skills..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel" id="cancelSwap">Cancel</button>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Submit Request
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+</html> 

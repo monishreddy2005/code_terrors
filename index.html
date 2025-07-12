@@ -11,281 +11,338 @@
     <!-- Header -->
     <header class="header">
         <div class="header-container">
-            <div class="logo">
+            <div class="header-left">
                 <h1>Skill Swap</h1>
             </div>
-            <div class="header-actions">
-                <a href="login.html" class="login-btn">
-                    <i class="fas fa-user"></i>
-                    Login
-                </a>
+            <div class="header-right">
+                <!-- Guest User Actions (shown when not logged in) -->
+                <div class="guest-actions" id="guestActions">
+                    <a href="login.html" class="login-btn">
+                        <i class="fas fa-user"></i>
+                        Login
+                    </a>
+                </div>
+                
+                <!-- Logged In User Actions (hidden by default) -->
+                <div class="user-actions" id="userActions" style="display: none;">
+                    <a href="swap-requests.html" class="swap-requests-btn">
+                        <i class="fas fa-exchange-alt"></i>
+                        Swap Requests
+                        <span class="request-count">3</span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Search and Filter Section -->
-        <section class="search-filter-section">
-            <div class="search-container">
-                <div class="search-box">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" placeholder="Search for skills or users..." class="search-input">
+    <!-- Main Layout Container -->
+    <div class="main-layout">
+        <!-- Profile Sidebar -->
+        <aside class="profile-sidebar" id="profileSidebar">
+            <div class="profile-card">
+                <div class="profile-header">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Profile" class="profile-pic-large">
+                    <h3 class="profile-name">John Doe</h3>
+                    <p class="profile-location">San Francisco, CA</p>
+                </div>
+                <div class="profile-skills">
+                    <div class="skills-section">
+                        <h4><i class="fas fa-gift"></i> Skills Offered</h4>
+                        <ul class="skills-list">
+                            <li>Web Development</li>
+                            <li>React</li>
+                            <li>Node.js</li>
+                        </ul>
+                    </div>
+                    <div class="skills-section">
+                        <h4><i class="fas fa-search"></i> Skills Wanted</h4>
+                        <ul class="skills-list">
+                            <li>UI/UX Design</li>
+                            <li>Graphic Design</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <a href="user-profile.html" class="profile-action-btn">
+                        <i class="fas fa-user"></i>
+                        Edit Profile
+                    </a>
+                    <a href="#" class="profile-action-btn">
+                        <i class="fas fa-cog"></i>
+                        Settings
+                    </a>
+                    <a href="#" class="profile-action-btn" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </a>
                 </div>
             </div>
-            
-            <div class="filter-container">
-                <select class="filter-select">
-                    <option value="">All Categories</option>
-                    <option value="programming">Programming</option>
-                    <option value="design">Design</option>
-                    <option value="marketing">Marketing</option>
-                    <option value="writing">Writing</option>
-                    <option value="music">Music</option>
-                    <option value="cooking">Cooking</option>
-                    <option value="languages">Languages</option>
-                </select>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Search and Filter Section -->
+            <section class="search-filter-section">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" placeholder="Search for skills or users..." class="search-input">
+                    </div>
+                </div>
                 
-                <select class="filter-select">
-                    <option value="">All Locations</option>
-                    <option value="remote">Remote</option>
-                    <option value="local">Local</option>
-                </select>
+                <div class="filter-container">
+                    <select class="filter-select">
+                        <option value="">All Categories</option>
+                        <option value="programming">Programming</option>
+                        <option value="design">Design</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="writing">Writing</option>
+                        <option value="music">Music</option>
+                        <option value="cooking">Cooking</option>
+                        <option value="languages">Languages</option>
+                    </select>
+                    
+                    <select class="filter-select">
+                        <option value="">All Locations</option>
+                        <option value="remote">Remote</option>
+                        <option value="local">Local</option>
+                    </select>
+                    
+                    <select class="filter-select">
+                        <option value="">Sort By</option>
+                        <option value="recent">Most Recent</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="distance">Nearest</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- User Cards Section -->
+            <section class="users-section">
+                <h2 class="section-title">Available Skill Swappers</h2>
                 
-                <select class="filter-select">
-                    <option value="">Sort By</option>
-                    <option value="recent">Most Recent</option>
-                    <option value="rating">Highest Rated</option>
-                    <option value="distance">Nearest</option>
-                </select>
-            </div>
-        </section>
-
-        <!-- User Cards Section -->
-        <section class="users-section">
-            <h2 class="section-title">Available Skill Swappers</h2>
-            
-            <div class="users-grid">
-                <!-- User Card 1 -->
-                <div class="user-card" onclick="window.location.href='profile.html'">
-                    <div class="user-info">
-                        <div class="user-avatar">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="John Doe">
-                        </div>
-                        <div class="user-details">
-                            <h3 class="user-name">John Doe</h3>
-                            <div class="skills-section">
-                                <div class="skills-offered">
-                                    <h4><i class="fas fa-gift"></i> Skills Offered</h4>
-                                    <p>Web Development, React, Node.js</p>
-                                </div>
-                                <div class="skills-wanted">
-                                    <h4><i class="fas fa-search"></i> Skills Wanted</h4>
-                                    <p>UI/UX Design, Graphic Design</p>
+                <div class="users-grid">
+                    <!-- User Card 1 -->
+                    <div class="user-card" onclick="window.location.href='profile.html'">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="John Doe">
+                            </div>
+                            <div class="user-details">
+                                <h3 class="user-name">John Doe</h3>
+                                <div class="skills-section">
+                                    <div class="skills-offered">
+                                        <h4><i class="fas fa-gift"></i> Skills Offered</h4>
+                                        <p>Web Development, React, Node.js</p>
+                                    </div>
+                                    <div class="skills-wanted">
+                                        <h4><i class="fas fa-search"></i> Skills Wanted</h4>
+                                        <p>UI/UX Design, Graphic Design</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="user-actions">
-                        <button class="request-btn">Request Swap</button>
-                        <div class="user-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <span class="rating-text">4.0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- User Card 2 -->
-                <div class="user-card" onclick="window.location.href='profile.html'">
-                    <div class="user-info">
-                        <div class="user-avatar">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face" alt="Sarah Johnson">
-                        </div>
-                        <div class="user-details">
-                            <h3 class="user-name">Sarah Johnson</h3>
-                            <div class="skills-section">
-                                <div class="skills-offered">
-                                    <h4><i class="fas fa-gift"></i> Skills Offered</h4>
-                                    <p>UI/UX Design, Figma, Adobe Creative Suite</p>
-                                </div>
-                                <div class="skills-wanted">
-                                    <h4><i class="fas fa-search"></i> Skills Wanted</h4>
-                                    <p>Web Development, JavaScript</p>
-                                </div>
+                        <div class="user-actions">
+                            <button class="request-btn">Request Swap</button>
+                            <div class="user-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="rating-text">4.0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="user-actions">
-                        <button class="request-btn">Request Swap</button>
-                        <div class="user-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <span class="rating-text">4.8</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- User Card 3 -->
-                <div class="user-card" onclick="window.location.href='profile.html'">
-                    <div class="user-info">
-                        <div class="user-avatar">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="Mike Chen">
-                        </div>
-                        <div class="user-details">
-                            <h3 class="user-name">Mike Chen</h3>
-                            <div class="skills-section">
-                                <div class="skills-offered">
-                                    <h4><i class="fas fa-gift"></i> Skills Offered</h4>
-                                    <p>Python, Data Science, Machine Learning</p>
-                                </div>
-                                <div class="skills-wanted">
-                                    <h4><i class="fas fa-search"></i> Skills Wanted</h4>
-                                    <p>Mobile App Development, React Native</p>
+                    <!-- User Card 2 -->
+                    <div class="user-card" onclick="window.location.href='profile.html'">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face" alt="Sarah Johnson">
+                            </div>
+                            <div class="user-details">
+                                <h3 class="user-name">Sarah Johnson</h3>
+                                <div class="skills-section">
+                                    <div class="skills-offered">
+                                        <h4><i class="fas fa-gift"></i> Skills Offered</h4>
+                                        <p>UI/UX Design, Figma, Adobe Creative Suite</p>
+                                    </div>
+                                    <div class="skills-wanted">
+                                        <h4><i class="fas fa-search"></i> Skills Wanted</h4>
+                                        <p>Web Development, JavaScript</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="user-actions">
-                        <button class="request-btn">Request Swap</button>
-                        <div class="user-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <span class="rating-text">4.2</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- User Card 4 -->
-                <div class="user-card" onclick="window.location.href='profile.html'">
-                    <div class="user-info">
-                        <div class="user-avatar">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" alt="Emily Rodriguez">
-                        </div>
-                        <div class="user-details">
-                            <h3 class="user-name">Emily Rodriguez</h3>
-                            <div class="skills-section">
-                                <div class="skills-offered">
-                                    <h4><i class="fas fa-gift"></i> Skills Offered</h4>
-                                    <p>Content Writing, SEO, Social Media</p>
-                                </div>
-                                <div class="skills-wanted">
-                                    <h4><i class="fas fa-search"></i> Skills Wanted</h4>
-                                    <p>Video Editing, Photography</p>
-                                </div>
+                        <div class="user-actions">
+                            <button class="request-btn">Request Swap</button>
+                            <div class="user-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="rating-text">4.8</span>
                             </div>
                         </div>
                     </div>
-                    <div class="user-actions">
-                        <button class="request-btn">Request Swap</button>
-                        <div class="user-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <span class="rating-text">4.6</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- User Card 5 -->
-                <div class="user-card" onclick="window.location.href='profile.html'">
-                    <div class="user-info">
-                        <div class="user-avatar">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face" alt="David Kim">
-                        </div>
-                        <div class="user-details">
-                            <h3 class="user-name">David Kim</h3>
-                            <div class="skills-section">
-                                <div class="skills-offered">
-                                    <h4><i class="fas fa-gift"></i> Skills Offered</h4>
-                                    <p>Guitar, Music Production, Piano</p>
-                                </div>
-                                <div class="skills-wanted">
-                                    <h4><i class="fas fa-search"></i> Skills Wanted</h4>
-                                    <p>Digital Marketing, Branding</p>
+                    <!-- User Card 3 -->
+                    <div class="user-card" onclick="window.location.href='profile.html'">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="Mike Chen">
+                            </div>
+                            <div class="user-details">
+                                <h3 class="user-name">Mike Chen</h3>
+                                <div class="skills-section">
+                                    <div class="skills-offered">
+                                        <h4><i class="fas fa-gift"></i> Skills Offered</h4>
+                                        <p>Python, Data Science, Machine Learning</p>
+                                    </div>
+                                    <div class="skills-wanted">
+                                        <h4><i class="fas fa-search"></i> Skills Wanted</h4>
+                                        <p>Mobile App Development, React Native</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="user-actions">
-                        <button class="request-btn">Request Swap</button>
-                        <div class="user-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <span class="rating-text">4.1</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- User Card 6 -->
-                <div class="user-card" onclick="window.location.href='profile.html'">
-                    <div class="user-info">
-                        <div class="user-avatar">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face" alt="Lisa Wang">
-                        </div>
-                        <div class="user-details">
-                            <h3 class="user-name">Lisa Wang</h3>
-                            <div class="skills-section">
-                                <div class="skills-offered">
-                                    <h4><i class="fas fa-gift"></i> Skills Offered</h4>
-                                    <p>Cooking, Baking, Recipe Development</p>
-                                </div>
-                                <div class="skills-wanted">
-                                    <h4><i class="fas fa-search"></i> Skills Wanted</h4>
-                                    <p>Photography, Food Styling</p>
-                                </div>
+                        <div class="user-actions">
+                            <button class="request-btn">Request Swap</button>
+                            <div class="user-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="rating-text">4.2</span>
                             </div>
                         </div>
                     </div>
-                    <div class="user-actions">
-                        <button class="request-btn">Request Swap</button>
-                        <div class="user-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <span class="rating-text">4.9</span>
+
+                    <!-- User Card 4 -->
+                    <div class="user-card" onclick="window.location.href='profile.html'">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" alt="Emily Rodriguez">
+                            </div>
+                            <div class="user-details">
+                                <h3 class="user-name">Emily Rodriguez</h3>
+                                <div class="skills-section">
+                                    <div class="skills-offered">
+                                        <h4><i class="fas fa-gift"></i> Skills Offered</h4>
+                                        <p>Content Writing, SEO, Social Media</p>
+                                    </div>
+                                    <div class="skills-wanted">
+                                        <h4><i class="fas fa-search"></i> Skills Wanted</h4>
+                                        <p>Video Editing, Photography</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-actions">
+                            <button class="request-btn">Request Swap</button>
+                            <div class="user-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="rating-text">4.6</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Card 5 -->
+                    <div class="user-card" onclick="window.location.href='profile.html'">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face" alt="David Kim">
+                            </div>
+                            <div class="user-details">
+                                <h3 class="user-name">David Kim</h3>
+                                <div class="skills-section">
+                                    <div class="skills-offered">
+                                        <h4><i class="fas fa-gift"></i> Skills Offered</h4>
+                                        <p>Guitar, Music Production, Piano</p>
+                                    </div>
+                                    <div class="skills-wanted">
+                                        <h4><i class="fas fa-search"></i> Skills Wanted</h4>
+                                        <p>Digital Marketing, Branding</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-actions">
+                            <button class="request-btn">Request Swap</button>
+                            <div class="user-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="rating-text">4.1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Card 6 -->
+                    <div class="user-card" onclick="window.location.href='profile.html'">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face" alt="Lisa Wang">
+                            </div>
+                            <div class="user-details">
+                                <h3 class="user-name">Lisa Wang</h3>
+                                <div class="skills-section">
+                                    <div class="skills-offered">
+                                        <h4><i class="fas fa-gift"></i> Skills Offered</h4>
+                                        <p>Cooking, Baking, Recipe Development</p>
+                                    </div>
+                                    <div class="skills-wanted">
+                                        <h4><i class="fas fa-search"></i> Skills Wanted</h4>
+                                        <p>Photography, Food Styling</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-actions">
+                            <button class="request-btn">Request Swap</button>
+                            <div class="user-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="rating-text">4.9</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Pagination -->
-            <div class="pagination-container">
-                <div class="pagination-info">
-                    <span class="pagination-text">Showing <span id="startRange">1</span> to <span id="endRange">6</span> of <span id="totalItems">6</span> users</span>
-                </div>
-                <div class="pagination-controls">
-                    <button class="pagination-btn prev-btn" id="prevBtn" disabled>
-                        <i class="fas fa-chevron-left"></i>
-                        Previous
-                    </button>
-                    <div class="pagination-numbers" id="paginationNumbers">
-                        <button class="page-number active" data-page="1">1</button>
+                
+                <!-- Pagination -->
+                <div class="pagination-container">
+                    <div class="pagination-info">
+                        <span class="pagination-text">Showing <span id="startRange">1</span> to <span id="endRange">6</span> of <span id="totalItems">6</span> users</span>
                     </div>
-                    <button class="pagination-btn next-btn" id="nextBtn">
-                        Next
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                    <div class="pagination-controls">
+                        <button class="pagination-btn prev-btn" id="prevBtn" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                            Previous
+                        </button>
+                        <div class="pagination-numbers" id="paginationNumbers">
+                            <button class="page-number active" data-page="1">1</button>
+                        </div>
+                        <button class="pagination-btn next-btn" id="nextBtn">
+                            Next
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
+        </main>
+    </div>
 
     <script src="script.js"></script>
 </body>

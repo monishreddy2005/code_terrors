@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swap Requests - Skill Swap</title>
+    <link rel="stylesheet" href="swap-requests.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <h1>Skill Swap</h1>
+            </div>
+            <div class="header-right">
+                <a href="#" class="swap-requests-btn active">
+                    <i class="fas fa-exchange-alt"></i>
+                    Swap Requests
+                    <span class="request-count">3</span>
+                </a>
+                <a href="index.html" class="home-btn">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <div class="profile-menu">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Profile" class="profile-pic">
+                    <div class="profile-dropdown">
+                        <a href="user-profile.html" class="dropdown-item">
+                            <i class="fas fa-user"></i>
+                            My Profile
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="requests-container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h2><i class="fas fa-exchange-alt"></i> Swap Requests</h2>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">All Requests</button>
+                    <button class="filter-tab" data-filter="pending">Pending</button>
+                    <button class="filter-tab" data-filter="accepted">Accepted</button>
+                    <button class="filter-tab" data-filter="rejected">Rejected</button>
+                </div>
+            </div>
+
+            <!-- Requests Grid -->
+            <div class="requests-grid" id="requestsGrid">
+                <!-- Request Card 1 -->
+                <div class="request-card" data-status="pending">
+                    <div class="card-header">
+                        <div class="user-info">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face" alt="Sarah Johnson" class="user-avatar">
+                            <div class="user-details">
+                                <h3 class="user-name">Sarah Johnson</h3>
+                                <div class="user-rating">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-text">4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-badge pending">
+                            <i class="fas fa-clock"></i>
+                            Pending
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="skill-exchange">
+                            <div class="skill-offered">
+                                <h4><i class="fas fa-gift"></i> Skill Offered</h4>
+                                <span class="skill-tag">UI/UX Design</span>
+                            </div>
+                            <div class="exchange-arrow">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="skill-wanted">
+                                <h4><i class="fas fa-search"></i> Skill Wanted</h4>
+                                <span class="skill-tag">React Development</span>
+                            </div>
+                        </div>
+                        
+                        <div class="request-message">
+                            <p>"I'd love to learn React development! I can teach you UI/UX design principles and help you create beautiful user interfaces. Let's swap skills!"</p>
+                        </div>
+                        
+                        <div class="request-date">
+                            <i class="fas fa-calendar"></i>
+                            Requested 2 days ago
+                        </div>
+                    </div>
+                    
+                    <div class="card-actions">
+                        <button class="btn-accept">
+                            <i class="fas fa-check"></i>
+                            Accept
+                        </button>
+                        <button class="btn-reject">
+                            <i class="fas fa-times"></i>
+                            Reject
+                        </button>
+                        <button class="btn-message">
+                            <i class="fas fa-envelope"></i>
+                            Message
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Request Card 2 -->
+                <div class="request-card" data-status="accepted">
+                    <div class="card-header">
+                        <div class="user-info">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face" alt="Mike Chen" class="user-avatar">
+                            <div class="user-details">
+                                <h3 class="user-name">Mike Chen</h3>
+                                <div class="user-rating">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span class="rating-text">4.2</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-badge accepted">
+                            <i class="fas fa-check-circle"></i>
+                            Accepted
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="skill-exchange">
+                            <div class="skill-offered">
+                                <h4><i class="fas fa-gift"></i> Skill Offered</h4>
+                                <span class="skill-tag">Graphic Design</span>
+                            </div>
+                            <div class="exchange-arrow">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="skill-wanted">
+                                <h4><i class="fas fa-search"></i> Skill Wanted</h4>
+                                <span class="skill-tag">JavaScript</span>
+                            </div>
+                        </div>
+                        
+                        <div class="request-message">
+                            <p>"I'm looking to learn JavaScript fundamentals. I can teach you graphic design and help you create stunning visuals for your projects."</p>
+                        </div>
+                        
+                        <div class="request-date">
+                            <i class="fas fa-calendar"></i>
+                            Accepted 1 week ago
+                        </div>
+                    </div>
+                    
+                    <div class="card-actions">
+                        <button class="btn-view-session">
+                            <i class="fas fa-play"></i>
+                            View Session
+                        </button>
+                        <button class="btn-message">
+                            <i class="fas fa-envelope"></i>
+                            Message
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Request Card 3 -->
+                <div class="request-card" data-status="rejected">
+                    <div class="card-header">
+                        <div class="user-info">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face" alt="Emily Rodriguez" class="user-avatar">
+                            <div class="user-details">
+                                <h3 class="user-name">Emily Rodriguez</h3>
+                                <div class="user-rating">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-text">4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-badge rejected">
+                            <i class="fas fa-times-circle"></i>
+                            Rejected
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="skill-exchange">
+                            <div class="skill-offered">
+                                <h4><i class="fas fa-gift"></i> Skill Offered</h4>
+                                <span class="skill-tag">Video Editing</span>
+                            </div>
+                            <div class="exchange-arrow">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="skill-wanted">
+                                <h4><i class="fas fa-search"></i> Skill Wanted</h4>
+                                <span class="skill-tag">Python</span>
+                            </div>
+                        </div>
+                        
+                        <div class="request-message">
+                            <p>"I'd love to learn Python programming! I can teach you video editing and help you create amazing video content."</p>
+                        </div>
+                        
+                        <div class="request-date">
+                            <i class="fas fa-calendar"></i>
+                            Rejected 3 days ago
+                        </div>
+                    </div>
+                    
+                    <div class="card-actions">
+                        <button class="btn-message">
+                            <i class="fas fa-envelope"></i>
+                            Message
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Request Card 4 -->
+                <div class="request-card" data-status="pending">
+                    <div class="card-header">
+                        <div class="user-info">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="David Kim" class="user-avatar">
+                            <div class="user-details">
+                                <h3 class="user-name">David Kim</h3>
+                                <div class="user-rating">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span class="rating-text">4.1</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-badge pending">
+                            <i class="fas fa-clock"></i>
+                            Pending
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="skill-exchange">
+                            <div class="skill-offered">
+                                <h4><i class="fas fa-gift"></i> Skill Offered</h4>
+                                <span class="skill-tag">Photography</span>
+                            </div>
+                            <div class="exchange-arrow">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="skill-wanted">
+                                <h4><i class="fas fa-search"></i> Skill Wanted</h4>
+                                <span class="skill-tag">Node.js</span>
+                            </div>
+                        </div>
+                        
+                        <div class="request-message">
+                            <p>"I'm interested in learning Node.js backend development. I can teach you photography techniques and help you capture amazing shots!"</p>
+                        </div>
+                        
+                        <div class="request-date">
+                            <i class="fas fa-calendar"></i>
+                            Requested 1 day ago
+                        </div>
+                    </div>
+                    
+                    <div class="card-actions">
+                        <button class="btn-accept">
+                            <i class="fas fa-check"></i>
+                            Accept
+                        </button>
+                        <button class="btn-reject">
+                            <i class="fas fa-times"></i>
+                            Reject
+                        </button>
+                        <button class="btn-message">
+                            <i class="fas fa-envelope"></i>
+                            Message
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Request Card 5 -->
+                <div class="request-card" data-status="accepted">
+                    <div class="card-header">
+                        <div class="user-info">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face" alt="Lisa Wang" class="user-avatar">
+                            <div class="user-details">
+                                <h3 class="user-name">Lisa Wang</h3>
+                                <div class="user-rating">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-text">4.7</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-badge accepted">
+                            <i class="fas fa-check-circle"></i>
+                            Accepted
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="skill-exchange">
+                            <div class="skill-offered">
+                                <h4><i class="fas fa-gift"></i> Skill Offered</h4>
+                                <span class="skill-tag">Database Design</span>
+                            </div>
+                            <div class="exchange-arrow">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="skill-wanted">
+                                <h4><i class="fas fa-search"></i> Skill Wanted</h4>
+                                <span class="skill-tag">UI/UX Design</span>
+                            </div>
+                        </div>
+                        
+                        <div class="request-message">
+                            <p>"I'd love to learn UI/UX design! I can teach you database design and help you create efficient data structures."</p>
+                        </div>
+                        
+                        <div class="request-date">
+                            <i class="fas fa-calendar"></i>
+                            Accepted 2 weeks ago
+                        </div>
+                    </div>
+                    
+                    <div class="card-actions">
+                        <button class="btn-view-session">
+                            <i class="fas fa-play"></i>
+                            View Session
+                        </button>
+                        <button class="btn-message">
+                            <i class="fas fa-envelope"></i>
+                            Message
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pagination-btn" id="prevPage" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                    Previous
+                </button>
+                <div class="page-numbers">
+                    <button class="page-number active" data-page="1">1</button>
+                    <button class="page-number" data-page="2">2</button>
+                    <button class="page-number" data-page="3">3</button>
+                </div>
+                <button class="pagination-btn" id="nextPage">
+                    Next
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="swap-requests.js"></script>
+</body>
+</html> 

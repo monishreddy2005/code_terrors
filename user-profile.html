@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Skill Swap</title>
+    <link rel="stylesheet" href="user-profile.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <h1>Skill Swap</h1>
+            </div>
+            <div class="header-right">
+                <a href="swap-requests.html" class="swap-requests-btn">
+                    <i class="fas fa-exchange-alt"></i>
+                    Swap Requests
+                    <span class="request-count">3</span>
+                </a>
+                <a href="index.html" class="home-btn">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <div class="profile-menu">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Profile" class="profile-pic">
+                    <div class="profile-dropdown">
+                        <a href="profile.html" class="dropdown-item">
+                            <i class="fas fa-user"></i>
+                            My Profile
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="profile-container">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="profile-avatar-section">
+                    <div class="profile-avatar">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop&crop=face" alt="Sarah Johnson" id="profileImage">
+                        <div class="avatar-overlay">
+                            <label for="imageUpload" class="upload-btn">
+                                <i class="fas fa-camera"></i>
+                            </label>
+                            <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                        </div>
+                        <div class="online-status">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-info">
+                    <div class="name-section">
+                        <h2 class="user-name" id="userName" contenteditable="true">Sarah Johnson</h2>
+                        <button class="edit-name-btn" id="editNameBtn">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="location-section">
+                        <div class="location-input">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <input type="text" id="userLocation" value="New York, NY" placeholder="Enter your location">
+                        </div>
+                    </div>
+                    
+                    <div class="user-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-text">4.8</span>
+                        <span class="review-count">(24 reviews)</span>
+                    </div>
+                </div>
+                
+                <div class="profile-actions">
+                    <button class="message-btn">
+                        <i class="fas fa-envelope"></i>
+                        Message
+                    </button>
+                </div>
+            </div>
+
+            <!-- Profile Content -->
+            <div class="profile-content">
+                <div class="content-single-column">
+                    <!-- About Section -->
+                    <div class="about-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-user"></i> About</h3>
+                            <button class="edit-section-btn" data-section="about">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                        <div class="about-content">
+                            <textarea id="userDescription" placeholder="Tell others about yourself, your experience, and what you're passionate about..." rows="4">Passionate UI/UX designer with 3+ years of experience creating beautiful and functional user interfaces. I love teaching others and learning new skills. Always excited to share my knowledge and pick up new techniques from fellow designers and developers.</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Skills Section -->
+                    <div class="skills-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-tools"></i> Skills</h3>
+                            <button class="edit-section-btn" data-section="skills">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="skills-container">
+                            <div class="skills-offered">
+                                <h4><i class="fas fa-gift"></i> Skills Offered</h4>
+                                <div class="skills-list" id="offeredSkillsList">
+                                    <span class="skill-tag" data-skill="UI/UX Design">
+                                        UI/UX Design
+                                        <button class="remove-skill" onclick="removeSkill(this, 'offered')">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </span>
+                                    <span class="skill-tag" data-skill="Graphic Design">
+                                        Graphic Design
+                                        <button class="remove-skill" onclick="removeSkill(this, 'offered')">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </span>
+                                    <span class="skill-tag" data-skill="Figma">
+                                        Figma
+                                        <button class="remove-skill" onclick="removeSkill(this, 'offered')">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <div class="add-skill-section">
+                                    <input type="text" id="addOfferedSkill" placeholder="Add a skill you can teach..." class="add-skill-input">
+                                    <button class="add-skill-btn" onclick="addSkill('offered')">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="skills-wanted">
+                                <h4><i class="fas fa-search"></i> Skills Wanted</h4>
+                                <div class="skills-list" id="wantedSkillsList">
+                                    <span class="skill-tag" data-skill="React Development">
+                                        React Development
+                                        <button class="remove-skill" onclick="removeSkill(this, 'wanted')">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </span>
+                                    <span class="skill-tag" data-skill="JavaScript">
+                                        JavaScript
+                                        <button class="remove-skill" onclick="removeSkill(this, 'wanted')">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </span>
+                                    <span class="skill-tag" data-skill="Python">
+                                        Python
+                                        <button class="remove-skill" onclick="removeSkill(this, 'wanted')">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <div class="add-skill-section">
+                                    <input type="text" id="addWantedSkill" placeholder="Add a skill you want to learn..." class="add-skill-input">
+                                    <button class="add-skill-btn" onclick="addSkill('wanted')">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Availability Section -->
+                    <div class="availability-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-calendar"></i> Availability</h3>
+                            <button class="edit-section-btn" data-section="availability">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                        <div class="availability-content">
+                            <div class="availability-options">
+                                <label class="availability-option">
+                                    <input type="checkbox" id="weekdays" checked>
+                                    <span class="checkmark"></span>
+                                    Weekdays
+                                </label>
+                                <label class="availability-option">
+                                    <input type="checkbox" id="weekends" checked>
+                                    <span class="checkmark"></span>
+                                    Weekends
+                                </label>
+                                <label class="availability-option">
+                                    <input type="checkbox" id="evenings">
+                                    <span class="checkmark"></span>
+                                    Evenings Only
+                                </label>
+                                <label class="availability-option">
+                                    <input type="checkbox" id="flexible">
+                                    <span class="checkmark"></span>
+                                    Flexible
+                                </label>
+                            </div>
+                            <div class="timezone-info">
+                                <i class="fas fa-clock"></i>
+                                <span>Timezone: Eastern Time (ET)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Privacy Settings -->
+                    <div class="privacy-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-shield-alt"></i> Privacy Settings</h3>
+                        </div>
+                        <div class="privacy-content">
+                            <div class="privacy-option">
+                                <label class="privacy-toggle">
+                                    <input type="checkbox" id="profilePublic" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <div class="privacy-info">
+                                    <h4>Public Profile</h4>
+                                    <p>Allow others to view your profile and send swap requests</p>
+                                </div>
+                            </div>
+                            <div class="privacy-option">
+                                <label class="privacy-toggle">
+                                    <input type="checkbox" id="showLocation" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <div class="privacy-info">
+                                    <h4>Show Location</h4>
+                                    <p>Display your location on your profile</p>
+                                </div>
+                            </div>
+                            <div class="privacy-option">
+                                <label class="privacy-toggle">
+                                    <input type="checkbox" id="showEmail">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <div class="privacy-info">
+                                    <h4>Show Email</h4>
+                                    <p>Allow others to contact you via email</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Section -->
+                    <div class="stats-section">
+                        <h3><i class="fas fa-chart-bar"></i> Statistics</h3>
+                        <div class="user-stats">
+                            <div class="stat">
+                                <span class="stat-number">12</span>
+                                <span class="stat-label">Skills Taught</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">8</span>
+                                <span class="stat-label">Skills Learned</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">24</span>
+                                <span class="stat-label">Reviews</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">15</span>
+                                <span class="stat-label">Swap Sessions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="activity-section">
+                        <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>Taught UI/UX Design</h4>
+                                    <p>Helped John understand design principles and Figma basics</p>
+                                    <span class="activity-time">2 days ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>Learned React Development</h4>
+                                    <p>Started learning React fundamentals from Mike</p>
+                                    <span class="activity-time">1 week ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>Completed Skill Swap</h4>
+                                    <p>Successfully completed UI/UX for JavaScript swap</p>
+                                    <span class="activity-time">2 weeks ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="btn-discard" id="discardBtn">
+                            <i class="fas fa-times"></i>
+                            Discard Changes
+                        </button>
+                        <button class="btn-save" id="saveBtn">
+                            <i class="fas fa-save"></i>
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Save Changes Modal -->
+    <div id="saveModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-save"></i> Save Changes</h2>
+                <button class="modal-close" id="closeSaveModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>You have unsaved changes. Would you like to save them?</p>
+                <div class="modal-actions">
+                    <button class="btn-cancel" id="discardChanges">Discard Changes</button>
+                    <button class="btn-submit" id="saveChanges">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="user-profile.js"></script>
+</body>
+</html> 
