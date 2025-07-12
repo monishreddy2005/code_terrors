@@ -2,7 +2,7 @@
 # Skill Swap Platform
 
 ##Team:
-- Chennareddy Monish.-
+- Chennareddy Monish.
 - Maram Ruthvi.
 - B Harshitha.
 - Parvathy Rajesh.
