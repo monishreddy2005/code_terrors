@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <div class="signup-container">
+        <form id="gmail-form">
+            <h2>Sign Up - Step 1</h2>
+            <input type="email" id="signup-gmail" placeholder="Enter your Gmail" required>
+            <button type="submit">Send Code</button>
+            <div id="gmail-msg"></div>
+        </form>
+        <form id="code-form" style="display:none;">
+            <h2>Sign Up - Step 2</h2>
+            <input type="text" id="signup-code" placeholder="Enter verification code" required>
+            <button type="submit">Verify Code</button>
+            <div id="code-msg"></div>
+        </form>
+        <form id="profile-form" style="display:none;" enctype="multipart/form-data">
+            <h2>Sign Up - Step 3</h2>
+            <input type="text" id="signup-name" placeholder="Name" required><br>
+            <input type="file" id="signup-photo" accept="image/*" required><br>
+            <textarea id="signup-about" placeholder="About" required></textarea><br>
+            <input type="text" id="signup-skills-offered" placeholder="Skills Offered" required><br>
+            <input type="text" id="signup-skills-wanted" placeholder="Skills Wanted" required><br>
+            <input type="text" id="signup-country" placeholder="Country/Place" required><br>
+            <input type="text" id="signup-availability" placeholder="Availability" required><br>
+            <button type="submit">Register</button>
+            <div id="profile-msg"></div>
+        </form>
+    </div>
+    <script src="signup.js"></script>
+</body>
+</html> 
