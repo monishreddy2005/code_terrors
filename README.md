@@ -1,11 +1,11 @@
 #Problem Statement-1 
-Skill Swap Platform
+# Skill Swap Platform
 
 #Team:
-1.Chennareddy Monish
-2.Maram Ruthvi
-3.B Harshitha
-4.Parvathy Rajesh
+1.Chennareddy Monish.
+2.Maram Ruthvi.
+3.B Harshitha.
+4.Parvathy Rajesh.
 
 
 # Skill Swap Backend
