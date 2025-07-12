@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Skill Swap</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f7f8fa;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .register-container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 32px 32px 24px 32px;
+        }
+        .register-title {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .register-form label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .register-form input,
+        .register-form select,
+        .register-form textarea {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .register-form .profile-pic-preview {
+            display: block;
+            margin: 0 auto 16px auto;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #eee;
+        }
+        .skills-tag-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 6px 6px 0 6px;
+            margin-bottom: 16px;
+            background: #fafbfc;
+        }
+        .skills-tag-input input {
+            border: none;
+            outline: none;
+            flex: 1;
+            min-width: 120px;
+            padding: 6px 0;
+            margin-bottom: 6px;
+            background: transparent;
+        }
+        .skill-tag {
+            background: #007bff;
+            color: #fff;
+            border-radius: 3px;
+            padding: 4px 10px 4px 8px;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        .skill-tag .remove-tag {
+            margin-left: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .register-form button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+        .register-form button:hover {
+            background: #0056b3;
+        }
+        @media (max-width: 600px) {
+            .register-container {
+                padding: 18px 6vw 18px 6vw;
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .register-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2 class="register-title">Create Your Account</h2>
+        <form class="register-form" id="registerForm" enctype="multipart/form-data" method="POST" action="/api/register">
+            <label for="profilePic">Profile Picture</label>
+            <input type="file" id="profilePic" name="profilePic" accept="image/*">
+            <img id="profilePicPreview" class="profile-pic-preview" src="https://via.placeholder.com/80" alt="Profile Preview">
+
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="place">Place/Location</label>
+            <input type="text" id="place" name="place" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <label>Skills Offered</label>
+            <div class="skills-tag-input" id="skillsOfferedInput">
+                <input type="text" placeholder="Type and press Enter...">
+            </div>
+            <input type="hidden" name="skillsOffered" id="skillsOfferedHidden">
+
+            <label>Skills Wanted</label>
+            <div class="skills-tag-input" id="skillsWantedInput">
+                <input type="text" placeholder="Type and press Enter...">
+            </div>
+            <input type="hidden" name="skillsWanted" id="skillsWantedHidden">
+
+            <label for="about">About</label>
+            <textarea id="about" name="about" rows="3" required></textarea>
+
+            <label for="availability">Availability</label>
+            <select id="availability" name="availability" required>
+                <option value="">--Select Availability--</option>
+                <option value="weekends">Weekends</option>
+                <option value="weekdays">Weekdays</option>
+                <option value="evenings">Evenings</option>
+                <option value="flexible">Flexible</option>
+            </select>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <script>
+    // Profile picture preview
+    document.getElementById('profilePic').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                document.getElementById('profilePicPreview').src = evt.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Tag input logic for skills
+    function setupTagInput(containerId, hiddenInputId) {
+        const container = document.getElementById(containerId);
+        const input = container.querySelector('input');
+        const hiddenInput = document.getElementById(hiddenInputId);
+        let tags = [];
+
+        function renderTags() {
+            // Remove all tags except the input
+            container.querySelectorAll('.skill-tag').forEach(tag => tag.remove());
+            tags.forEach((tag, idx) => {
+                const tagEl = document.createElement('span');
+                tagEl.className = 'skill-tag';
+                tagEl.textContent = tag;
+                const removeBtn = document.createElement('span');
+                removeBtn.className = 'remove-tag';
+                removeBtn.innerHTML = '&times;';
+                removeBtn.onclick = () => {
+                    tags.splice(idx, 1);
+                    renderTags();
+                };
+                tagEl.appendChild(removeBtn);
+                container.insertBefore(tagEl, input);
+            });
+            hiddenInput.value = tags.join(',');
+        }
+
+        input.addEventListener('keydown', function(e) {
+            if ((e.key === 'Enter' || e.key === ',') && input.value.trim()) {
+                e.preventDefault();
+                const value = input.value.trim();
+                if (value && !tags.includes(value)) {
+                    tags.push(value);
+                    renderTags();
+                }
+                input.value = '';
+            } else if (e.key === 'Backspace' && !input.value && tags.length) {
+                tags.pop();
+                renderTags();
+            }
+        });
+        input.addEventListener('blur', function() {
+            if (input.value.trim()) {
+                const value = input.value.trim();
+                if (value && !tags.includes(value)) {
+                    tags.push(value);
+                    renderTags();
+                }
+                input.value = '';
+            }
+        });
+        renderTags();
+    }
+    setupTagInput('skillsOfferedInput', 'skillsOfferedHidden');
+    setupTagInput('skillsWantedInput', 'skillsWantedHidden');
+
+    document.getElementById('registerForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const res = await fetch('/api/register', { method: 'POST', body: formData });
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('token', data.token);
+        window.location.href = 'index.html';
+      } else {
+        alert(data.error || 'Registration failed');
+      }
+    });
+    </script>
+</body>
+</html> 
